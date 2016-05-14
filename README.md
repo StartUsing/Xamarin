@@ -18,9 +18,9 @@ Xamarin.Forms中的一些小例子
 
 # 以上引用有
 
-1. ZouJian大牛 https://github.com/chsword
-2. XLabs       https://github.com/XLabs/Xamarin-Forms-Labs
+1. ZouJian大牛          https://github.com/chsword
+2. XLabs                https://github.com/XLabs/Xamarin-Forms-Labs
 3. LiChen(It's me)      https://github.com/StartUsing
 4. 暂无
 
-感谢以上共享的文章.
+感谢以上共享的文章和帮助.（以上排名要分先后.）
