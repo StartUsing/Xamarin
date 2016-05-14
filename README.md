@@ -6,7 +6,7 @@ Xamarin.Forms中的一些小例子
 
 2.本文在于实现Xamarin.Forms的一些基本实例,大神路过如有发现错误,请多加指正. 
 
-# 目录
+# 示例目录
 
 1.自定义TablePage(大家都喜欢看IOS版本的,所以这里的一个示例将是以IOS版本的为蓝图做一个IOS,Android,WindowsPhone上都能用的TablePage)
 
@@ -15,3 +15,12 @@ Xamarin.Forms中的一些小例子
 3.Xamarin中调用各种API(照相,相册选择照片,录音,播放音频,等等.)
 
 4.各种动画效果示例.
+
+# 以上引用有
+
+1. ZouJian大牛 https://github.com/chsword
+2. XLabs       https://github.com/XLabs/Xamarin-Forms-Labs
+3. LiChen(It's me)      https://github.com/StartUsing
+4. 暂无
+
+感谢以上共享的文章.
