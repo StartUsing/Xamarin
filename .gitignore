@@ -3,3 +3,10 @@
 ################################################################################
 
 /XamarinTest.App/XamarinTest.App/XamarinTest.App/bin/Debug
+/XamarinTest.App/XamarinTest.App/XamarinTest.App/obj/Debug
+/XamarinTest.App/XamarinTest.App/XamarinTest.App.Droid/bin/Debug
+/XamarinTest.App/XamarinTest.App/XamarinTest.App.Droid/obj/Debug
+/XamarinTest.App/XamarinTest.App/XamarinTest.App.iOS/bin/iPhone/Debug
+/XamarinTest.App/XamarinTest.App/XamarinTest.App.iOS/obj/iPhone/Debug
+/XamarinTest.App/.vs/XamarinTest.App/v14
+/XamarinTest.App/packages
