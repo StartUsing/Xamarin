@@ -44,5 +44,7 @@ XamarinTest.APP
 
 │   ├──ISaceAndLoad  //文件读写
 
+├──Extensions //一些拓展方法
+
 ├──Views //页面类
 
