@@ -4,6 +4,13 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using XLabs.Forms;
+using XLabs.Ioc;
+using XLabs.Platform.Device;
+using XLabs.Platform.Mvvm;
+using XLabs.Platform.Services;
+using XLabs.Platform.Services.Email;
+using XLabs.Platform.Services.Media;
 
 namespace XamarinTest.App.iOS
 {
@@ -11,7 +18,7 @@ namespace XamarinTest.App.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    public partial class AppDelegate : XFormsApplicationDelegate
     {
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
@@ -22,10 +29,32 @@ namespace XamarinTest.App.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            this.SetIoc();
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        private void SetIoc()
+        {
+            var resolverContainer = new SimpleContainer();
+
+            var app = new XFormsAppiOS();
+            app.Init(this);
+
+            var documents = app.AppDataDirectory;
+            resolverContainer.Register<IDevice>(t => AppleDevice.CurrentDevice)
+                .Register<ITextToSpeechService, TextToSpeechService>()
+                .Register<IEmailService, EmailService>()
+                .Register<IMediaPicker, MediaPicker>()
+                .Register<ISoundService, SoundService>()
+                .Register<IXFormsApp>(app)
+                .Register<ISecureStorage, SecureStorage>()
+                .Register<IDependencyContainer>(t => resolverContainer)
+                ;
+
+            Resolver.SetResolver(resolverContainer.GetResolver());
         }
     }
 }
