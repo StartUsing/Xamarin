@@ -24,3 +24,27 @@ Xamarin.Forms中的一些小例子
 4. 暂无
 
 感谢以上共享的文章和帮助.（以上排名要分先后.）
+
+# 项目引用
+所有项目需要引用 Xlabs.Forms (NuGet).
+
+IOS需要引用  ToastIOS 这个NuGet找不到.大家在项目里面查看地址吧
+
+# Project目录
+
+XamarinTest.APP
+
+├──DependencyService //一些接口
+
+│   ├──IAudio //音频
+
+│   ├──IImageService //调整图片
+
+│   ├──IMakeTextShow //文本提示
+
+│   ├──ISaceAndLoad  //文件读写
+
+├──Extensions //一些拓展方法
+
+├──Views //页面类
+
