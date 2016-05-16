@@ -28,7 +28,7 @@ Xamarin.Forms中的一些小例子
 # 项目引用
 所有项目需要引用 Xlabs.Forms (NuGet).
 
-IOS需要引用  ToastIOS 这个NuGet找不到.大家在项目里面查看地址吧
+IOS需要引用  ToastIOS 这个NuGet找不到.我会上传到百度网盘中大家可以去下载这个 DLL
 
 # Project目录
 
