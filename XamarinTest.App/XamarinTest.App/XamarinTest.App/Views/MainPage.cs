@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Xamarin.Forms;
 using XLabs.Forms.Controls;
 
@@ -34,16 +35,22 @@ namespace XamarinTest.App.Views
         }
     }
 
-    public class FactoryViewModel
+    public class FactoryViewModel<T>
     {
         public string Title { get; set; }
 
         public EventHandler Event { get; set; }
 
-        public FactoryViewModel(string title, EventHandler e)
+        public FactoryViewModel(string title)
         {
             Title = title;
-            Event = e;
+            Event += async (s, e) =>
+            {
+                Type tx = typeof(T);
+                var mf = tx.GetRuntimeMethod("GetInse", null);
+                var x = (T)mf.Invoke(null, null);
+                await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(x));
+            };
         }
     }
 }
