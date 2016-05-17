@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 using Xamarin.Forms;
 using XLabs.Forms.Controls;
@@ -20,14 +21,14 @@ namespace XamarinTest.App.Views
                 {
                     Children =
                     {
-                        BtnFactory(new FactoryViewModel("ListView",async (s,e)=>{ await Application.Current.MainPage.Navigation.PushModalAsync( new NavigationPage(ListViewPage.GetInse()));})),
+                        BtnFactory(new FactoryViewModel<ListViewPage>("ListView")),
                         //BtnFactory(new FactoryViewModel("SaveAndLoad",async (s,e)=>{await Application.Current.MainPage.Navigation.PushModalAsync( new NavigationPage(ListViewPage.GetInse()));})),
                     }
                 }
             };
         }
 
-        public View BtnFactory(FactoryViewModel model)
+        public View BtnFactory<T>(FactoryViewModel<T> model) where T : ContentPage
         {
             var btn = new Button() { Text = model.Title };
             btn.Clicked += model.Event;
@@ -35,8 +36,8 @@ namespace XamarinTest.App.Views
         }
     }
 
-    public class FactoryViewModel<T>
-    {
+    public class FactoryViewModel<T>where T: ContentPage
+    { 
         public string Title { get; set; }
 
         public EventHandler Event { get; set; }
@@ -44,11 +45,11 @@ namespace XamarinTest.App.Views
         public FactoryViewModel(string title)
         {
             Title = title;
-            Event += async (s, e) =>
+            Event +=  async(s, e) =>
             {
-                Type tx = typeof(T);
-                var mf = tx.GetRuntimeMethod("GetInse", null);
-                var x = (T)mf.Invoke(null, null);
+                var tx = typeof(T);
+                var test = tx.GetTypeInfo().GetDeclaredMethod("GetInse");
+                var x = (T)test.Invoke(null, null);
                 await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(x));
             };
         }
