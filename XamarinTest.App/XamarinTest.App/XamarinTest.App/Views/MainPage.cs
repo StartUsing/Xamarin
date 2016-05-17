@@ -47,6 +47,7 @@ namespace XamarinTest.App.Views
             Title = title;
             Event +=  async(s, e) =>
             {
+                //反射-看不明的话自己按F1或者百度谷歌。
                 var tx = typeof(T);
                 var test = tx.GetTypeInfo().GetDeclaredMethod("GetInse");
                 var x = (T)test.Invoke(null, null);
