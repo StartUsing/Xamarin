@@ -20,15 +20,15 @@ Xamarin.Forms中的一些小例子
 
 1. ZouJian大牛          https://github.com/chsword
 2. XLabs                https://github.com/XLabs/Xamarin-Forms-Labs
-3. LiChen(It's me)      https://github.com/StartUsing
-4. 暂无
+3. ToastIOS             暂无
+4. LiChen(It's me)      https://github.com/StartUsing
 
 感谢以上共享的文章和帮助.（以上排名要分先后.）
 
 # 项目引用
 所有项目需要引用 Xlabs.Forms (NuGet).
 
-IOS需要引用  ToastIOS 这个NuGet找不到.我会上传到百度网盘中大家可以去下载这个 DLL
+IOS项目需要引用  XamarinTest.App.IOS/DependencyService/ToastIOS.dll   (原谅我不知道作者是谁.)
 
 # Project目录
 
