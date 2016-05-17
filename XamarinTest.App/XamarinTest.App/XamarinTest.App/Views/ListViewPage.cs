@@ -55,7 +55,9 @@ namespace XamarinTest.App.Views
                _lv.IsEnabled = true;
            };
 
-            _lv.ItemAppearing += (s, e) =>
+            //这里的原理很简单，数据显示到了哪里就去加载后面的数据
+            //提问：在实际情况中，新数据如何自动添加？（这里单靠用户手动下拉刷新是不理智的.）
+            _lv.ItemAppearing += (s, e) =>  
            {
                if (_lv == null || Items.Count <= 1 || IsLoading) return;
                var item = e.Item as string;
@@ -87,6 +89,7 @@ namespace XamarinTest.App.Views
                }
            };
 
+            //下拉刷新(这个你看看Xamarin文档就知道是为什么了)
             _lv.RefreshCommand = new Command(() =>
            {
                _lv.IsRefreshing = true;

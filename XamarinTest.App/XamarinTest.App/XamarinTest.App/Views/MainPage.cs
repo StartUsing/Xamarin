@@ -9,7 +9,6 @@ namespace XamarinTest.App.Views
 {
     public class MainPage : ContentPage
     {
-
         public MainPage()
         {
             Title = "Hello Xamarin";
