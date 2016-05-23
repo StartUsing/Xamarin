@@ -20,8 +20,9 @@ namespace XamarinTest.App.Views
                 {
                     Children =
                     {
-                        BtnFactory(new FactoryViewModel<ListViewPage>("ListView")),
+                        BtnFactory(new FactoryViewModel<ListViewPage>("ListView")),//没利用反射之前是下面这何种写法
                         //BtnFactory(new FactoryViewModel("SaveAndLoad",async (s,e)=>{await Application.Current.MainPage.Navigation.PushModalAsync( new NavigationPage(ListViewPage.GetInse()));})),
+                        BtnFactory(new FactoryViewModel<PhotoPage>("GetPhoto"))
                     }
                 }
             };
@@ -46,7 +47,7 @@ namespace XamarinTest.App.Views
             Title = title;
             Event +=  async(s, e) =>
             {
-                //反射-看不明的话自己按F1或者百度谷歌。
+                //反射
                 var tx = typeof(T);
                 var test = tx.GetTypeInfo().GetDeclaredMethod("GetInse");
                 var x = (T)test.Invoke(null, null);
