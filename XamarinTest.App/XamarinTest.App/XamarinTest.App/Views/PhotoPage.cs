@@ -38,7 +38,7 @@ namespace XamarinTest.App.Views
                     NewPhotographBtn(),
                     new Button
                     {
-                        Text = "从本机获取照片"//暂留
+                        Text = "从本机获取照片"//暂留 TestUpLoad GitHub
                     }
                 }
             };
