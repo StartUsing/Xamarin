@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.IO;
+using Xamarin.Forms;
 using XLabs.Platform.Services.Media;
 
 namespace XamarinTest.App.Views
@@ -14,9 +15,7 @@ namespace XamarinTest.App.Views
 
         private static readonly StackLayout Images = new StackLayout
         {
-            Padding = new Thickness(20, 5, 0, 10),
             Orientation = StackOrientation.Horizontal,
-            BackgroundColor = Color.White,
             HeightRequest = 80,
             Children = { }
         };
@@ -30,16 +29,14 @@ namespace XamarinTest.App.Views
         public PhotoPage()
         {
             Title = "获得照片";
+            ToolbarItems.AddBackButtion();
             Content = new StackLayout
             {
                 Children =
                 {
                     Imgs,
                     NewPhotographBtn(),
-                    new Button
-                    {
-                        Text = "从本机获取照片"//暂留 TestUpLoad GitHub
-                    }
+                    GetPhotographBtn(),
                 }
             };
         }
@@ -96,6 +93,37 @@ namespace XamarinTest.App.Views
                 }
             };
 
+            return btn;
+        }
+
+        public View GetPhotographBtn()
+        {
+            var btn = new Button { Text = "从本机获取照片" };
+
+            btn.Clicked += async (s, e) =>
+            {
+                await DependencyService.Get<IMediaPicker>().SelectPhotoAsync(new CameraMediaStorageOptions
+                    {
+                        DefaultCamera = CameraDevice.Front,
+                        MaxPixelDimension = 400
+                    }).ContinueWith(t =>
+                    {
+                        if (t.IsCanceled)
+                        {
+
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                Images.Children.Add(new Image
+                                {
+                                    Source = ImageSource.FromStream(() => t.Result.Source),
+                                });
+                            });
+                        }
+                    });
+            };
             return btn;
         }
     }
