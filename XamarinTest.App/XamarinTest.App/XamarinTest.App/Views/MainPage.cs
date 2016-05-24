@@ -22,7 +22,8 @@ namespace XamarinTest.App.Views
                     {
                         BtnFactory(new FactoryViewModel<ListViewPage>("ListView")),//没利用反射之前是下面这何种写法
                         //BtnFactory(new FactoryViewModel("SaveAndLoad",async (s,e)=>{await Application.Current.MainPage.Navigation.PushModalAsync( new NavigationPage(ListViewPage.GetInse()));})),
-                        BtnFactory(new FactoryViewModel<PhotoPage>("GetPhoto"))
+                        BtnFactory(new FactoryViewModel<PhotoPage>("GetPhoto")),
+                        BtnFactory(new FactoryViewModel<PromptPage>("Prompt")),
                     }
                 }
             };
