@@ -49,6 +49,7 @@
     <Compile Include="Views\MainPage.cs" />
     <Compile Include="Views\PhotoPage.cs" />
     <Compile Include="Views\PromptPage.cs" />
+    <Compile Include="Views\SoundPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">

@@ -24,6 +24,7 @@ namespace XamarinTest.App.Views
                         //BtnFactory(new FactoryViewModel("SaveAndLoad",async (s,e)=>{await Application.Current.MainPage.Navigation.PushModalAsync( new NavigationPage(ListViewPage.GetInse()));})),
                         BtnFactory(new FactoryViewModel<PhotoPage>("GetPhoto")),
                         BtnFactory(new FactoryViewModel<PromptPage>("Prompt")),
+                        BtnFactory(new FactoryViewModel<SoundPage>("Sound")),
                     }
                 }
             };
@@ -37,8 +38,8 @@ namespace XamarinTest.App.Views
         }
     }
 
-    public class FactoryViewModel<T>where T: ContentPage
-    { 
+    public class FactoryViewModel<T> where T : ContentPage
+    {
         public string Title { get; set; }
 
         public EventHandler Event { get; set; }
@@ -46,14 +47,14 @@ namespace XamarinTest.App.Views
         public FactoryViewModel(string title)
         {
             Title = title;
-            Event +=  async(s, e) =>
-            {
+            Event += async (s, e) =>
+           {
                 //反射
                 var tx = typeof(T);
-                var test = tx.GetTypeInfo().GetDeclaredMethod("GetInse");
-                var x = (T)test.Invoke(null, null);
-                await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(x));
-            };
+               var test = tx.GetTypeInfo().GetDeclaredMethod("GetInse");
+               var x = (T)test.Invoke(null, null);
+               await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(x));
+           };
         }
     }
 }
